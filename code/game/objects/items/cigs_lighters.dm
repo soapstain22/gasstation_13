@@ -617,7 +617,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/cigbutt
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigbutt"
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
