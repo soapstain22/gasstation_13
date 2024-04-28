@@ -4663,7 +4663,7 @@
 	pixel_y = 9;
 	pixel_x = 14
 	},
-/obj/item/clothing/mask/cigarette{
+/obj/item/cigarette{
 	pixel_y = 2
 	},
 /turf/open/floor/iron/small,
@@ -8994,7 +8994,7 @@
 	pixel_x = -6;
 	pixel_y = 3
 	},
-/obj/item/clothing/mask/cigarette{
+/obj/item/cigarette{
 	pixel_x = 5;
 	pixel_y = 2
 	},
@@ -16245,7 +16245,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/item/stack/spacecash/c1,
-/obj/item/clothing/mask/cigarette/cigar/havana,
+/obj/item/cigarette/cigar/havana,
 /turf/open/floor/light/colour_cycle/dancefloor_b,
 /area/station/maintenance/starboard/central)
 "gJS" = (
@@ -29993,7 +29993,7 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
-/obj/item/clothing/mask/cigarette/candy{
+/obj/item/cigarette/candy{
 	pixel_x = -3;
 	pixel_y = 10
 	},
@@ -32456,11 +32456,11 @@
 /area/station/engineering/atmos)
 "lNF" = (
 /obj/effect/spawner/random/entertainment/lighter,
-/obj/item/clothing/mask/cigarette/rollie/mindbreaker{
+/obj/item/cigarette/rollie/mindbreaker{
 	pixel_x = -2;
 	pixel_y = 6
 	},
-/obj/item/clothing/mask/cigarette/rollie/trippy{
+/obj/item/cigarette/rollie/trippy{
 	pixel_x = 4
 	},
 /obj/effect/mapping_helpers/burnt_floor,
@@ -33187,7 +33187,7 @@
 	pixel_x = -3;
 	pixel_y = 10
 	},
-/obj/item/clothing/mask/cigarette/cigar{
+/obj/item/cigarette/cigar{
 	pixel_x = -1;
 	pixel_y = -2
 	},
@@ -35182,7 +35182,7 @@
 	pixel_y = 2
 	},
 /obj/item/wrench,
-/obj/item/clothing/mask/cigarette/xeno{
+/obj/item/cigarette/xeno{
 	pixel_x = -3;
 	pixel_y = -9
 	},
@@ -50343,7 +50343,7 @@
 	pixel_y = -3;
 	pixel_x = -2
 	},
-/obj/item/clothing/mask/cigarette{
+/obj/item/cigarette{
 	pixel_x = 6;
 	pixel_y = 4
 	},
@@ -50713,7 +50713,7 @@
 	dir = 10
 	},
 /obj/structure/table,
-/obj/item/clothing/mask/cigarette,
+/obj/item/cigarette,
 /obj/item/toy/toy_dagger,
 /obj/item/clothing/head/collectable/paper,
 /obj/item/toy/figure/roboticist{
@@ -59719,7 +59719,7 @@
 	pixel_x = -2;
 	pixel_y = -3
 	},
-/obj/item/clothing/mask/cigarette/cigar,
+/obj/item/cigarette/cigar,
 /obj/effect/mapping_helpers/broken_floor,
 /obj/machinery/light_switch/directional/south,
 /turf/open/floor/iron/smooth,
@@ -68775,7 +68775,7 @@
 /obj/item/stock_parts/cell/crap{
 	pixel_y = 5
 	},
-/obj/item/clothing/mask/cigarette/pipe/cobpipe{
+/obj/item/cigarette/pipe/cobpipe{
 	pixel_x = 1;
 	pixel_y = -2
 	},

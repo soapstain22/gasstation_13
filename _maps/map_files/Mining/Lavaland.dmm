@@ -7223,7 +7223,7 @@
 	},
 /area/mine/laborcamp)
 "Sc" = (
-/obj/item/clothing/mask/cigarette/robust{
+/obj/item/cigarette/robust{
 	pixel_x = 3;
 	pixel_y = -10
 	},
@@ -7517,7 +7517,7 @@
 /turf/open/floor/plating,
 /area/mine/laborcamp/security/maintenance)
 "TX" = (
-/obj/item/clothing/mask/cigarette/robust{
+/obj/item/cigarette/robust{
 	pixel_x = 8;
 	pixel_y = 8
 	},
