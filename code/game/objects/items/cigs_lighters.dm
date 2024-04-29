@@ -1038,7 +1038,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/vape
 	name = "\improper E-Cigarette"
 	desc = "A classy and highly sophisticated electronic cigarette, for classy and dignified gentlemen. A warning label reads \"Warning: Do not fill with flammable materials.\""//<<< i'd vape to that.
-	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "vape"
 	worn_icon_state = "vape_worn"
 	greyscale_config = /datum/greyscale_config/vape
