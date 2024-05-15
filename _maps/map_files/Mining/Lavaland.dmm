@@ -333,6 +333,13 @@
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/open/floor/plating,
 /area/mine/maintenance/service)
+"co" = (
+/obj/item/cigarette/robust{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "cq" = (
 /obj/item/cultivator,
 /turf/open/floor/iron/dark,
@@ -2022,17 +2029,6 @@
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/mine/laborcamp/security)
-"lM" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
-/obj/machinery/door/airlock/external/glass{
-	name = "Mining Shuttle Airlock"
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/mine/production)
 "lN" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Maintenance"
@@ -2801,6 +2797,18 @@
 /obj/effect/spawner/random/trash/hobo_squat,
 /turf/open/floor/plating,
 /area/mine/maintenance/public/south)
+"pj" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/machinery/door/airlock/external/glass{
+	name = "Mining Shuttle Airlock"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
+/turf/open/floor/iron/dark/textured_large,
+/area/mine/production)
 "pm" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 8
@@ -3304,6 +3312,21 @@
 	dir = 8
 	},
 /area/mine/medical)
+"sp" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/brown/filled/mid_joiner{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external/glass{
+	name = "Mining Shuttle Airlock"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
+/turf/open/floor/iron/dark/textured_large,
+/area/mine/production)
 "st" = (
 /obj/structure/chair/stool/directional/north,
 /obj/effect/decal/cleanable/dirt,
@@ -7194,21 +7217,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/mine/laborcamp/quarters)
-"RW" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/brown/filled/mid_joiner{
-	dir = 1
-	},
-/obj/machinery/door/airlock/external/glass{
-	name = "Mining Shuttle Airlock"
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/mine/production)
 "RY" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -7222,13 +7230,6 @@
 	dir = 8
 	},
 /area/mine/laborcamp)
-"Sc" = (
-/obj/item/cigarette/robust{
-	pixel_x = 3;
-	pixel_y = -10
-	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "Sd" = (
 /obj/structure/fence/end{
 	dir = 8
@@ -7516,13 +7517,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/mine/laborcamp/security/maintenance)
-"TX" = (
-/obj/item/cigarette/robust{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "Ub" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/light/small/directional/west,
@@ -7563,6 +7557,13 @@
 /obj/structure/stone_tile,
 /obj/structure/stone_tile/cracked{
 	dir = 8
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Uk" = (
+/obj/item/cigarette/robust{
+	pixel_x = 3;
+	pixel_y = -10
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
@@ -25959,7 +25960,7 @@ da
 qV
 Te
 pU
-TX
+co
 pU
 aj
 pU
@@ -26215,7 +26216,7 @@ Ge
 Ot
 qw
 Te
-Sc
+Uk
 pu
 jf
 aj
@@ -47022,11 +47023,11 @@ GL
 Jl
 rv
 TJ
-RW
+sp
 cc
 XM
 CM
-lM
+pj
 Ec
 BP
 BP

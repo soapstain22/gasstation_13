@@ -1960,11 +1960,6 @@
 	},
 /turf/open/floor/iron/dark/herringbone,
 /area/station/commons/vacant_room)
-"agG" = (
-/obj/structure/dresser,
-/obj/item/cigarette/cigar/havana,
-/turf/open/floor/iron/grimy,
-/area/station/commons/vacant_room)
 "agH" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/reagent_dispensers/beerkeg,
@@ -10726,31 +10721,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
-"cFH" = (
-/obj/structure/table/wood,
-/obj/structure/sign/picture_frame/showroom/two{
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/obj/structure/sign/picture_frame/showroom/one{
-	pixel_x = -8;
-	pixel_y = 32
-	},
-/obj/item/storage/box/matches{
-	pixel_x = -2;
-	pixel_y = 3
-	},
-/obj/item/cigarette/cigar{
-	pixel_x = -4;
-	pixel_y = 1
-	},
-/obj/item/cigarette/cigar{
-	pixel_x = 4;
-	pixel_y = 1
-	},
-/obj/item/cigarette/cigar/cohiba,
-/turf/open/floor/wood,
-/area/station/command/meeting_room)
 "cFP" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 10
@@ -11062,6 +11032,9 @@
 	dir = 8
 	},
 /area/station/commons/vacant_room)
+"cKu" = (
+/turf/open/floor/plating/airless,
+/area/space)
 "cKE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weldingtool,
@@ -27510,6 +27483,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron/dark,
 /area/station/medical/treatment_center)
+"iTp" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "iTr" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Chapel Office"
@@ -49635,6 +49612,11 @@
 /obj/machinery/light/warm/directional/north,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain/private)
+"qCl" = (
+/obj/structure/dresser,
+/obj/item/cigarette/cigar/havana,
+/turf/open/floor/iron/grimy,
+/area/station/commons/vacant_room)
 "qCm" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 4
@@ -50153,6 +50135,31 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/medical/chemistry)
+"qLO" = (
+/obj/structure/table/wood,
+/obj/structure/sign/picture_frame/showroom/two{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/structure/sign/picture_frame/showroom/one{
+	pixel_x = -8;
+	pixel_y = 32
+	},
+/obj/item/storage/box/matches{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/item/cigarette/cigar{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/obj/item/cigarette/cigar{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/item/cigarette/cigar/cohiba,
+/turf/open/floor/wood,
+/area/station/command/meeting_room)
 "qLR" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -54229,12 +54236,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/science/lower)
-"siX" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 5
-	},
-/turf/open/space/basic,
-/area/space)
 "siZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -59912,6 +59913,12 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/carpet,
 /area/station/commons/vacant_room/office)
+"uhM" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron/airless,
+/area/space)
 "uhP" = (
 /obj/structure/fluff/tram_rail/electric/anchor,
 /turf/open/openspace,
@@ -130810,8 +130817,8 @@ vXM
 vXM
 vXM
 vXM
-vXM
-vXM
+iTp
+cKu
 vXM
 vXM
 vXM
@@ -131066,9 +131073,9 @@ vXM
 vXM
 vXM
 vXM
-vXM
-vXM
-vXM
+iTp
+cKu
+cKu
 vXM
 vXM
 vXM
@@ -131323,9 +131330,9 @@ vXM
 vXM
 vXM
 vXM
-vXM
-siX
-vXM
+iTp
+uhM
+iTp
 vXM
 vXM
 vXM
@@ -131581,7 +131588,7 @@ vXM
 vXM
 vXM
 vXM
-vXM
+iTp
 vXM
 vXM
 vXM
@@ -143666,7 +143673,7 @@ aaa
 aaa
 gcp
 agw
-agG
+qCl
 gcp
 aaa
 aaa
@@ -156408,7 +156415,7 @@ blo
 fxK
 lpg
 qyZ
-cFH
+qLO
 xcH
 oho
 bPp
