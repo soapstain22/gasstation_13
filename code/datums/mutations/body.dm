@@ -329,6 +329,7 @@
 	quality = NEGATIVE
 	text_gain_indication = "<span class='warning'>You feel hot.</span>"
 	text_lose_indication = "<span class='notice'>You feel a lot cooler.</span>"
+	conflicts = list(/datum/mutation/human/adaptation/heat)
 	difficulty = 14
 	synchronizer_coeff = 1
 	power_coeff = 1
