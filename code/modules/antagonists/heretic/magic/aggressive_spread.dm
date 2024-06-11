@@ -17,7 +17,16 @@
 	aoe_radius = 2
 
 /datum/action/cooldown/spell/aoe/rust_conversion/get_things_to_cast_on(atom/center)
-	return RANGE_TURFS(aoe_radius, center)
+
+	var/list/things_to_convert = RANGE_TURFS(aoe_radius, center)
+
+	// Also converts things right next to you.
+	for(var/atom/movable/nearby_movable in view(1, center))
+		if(nearby_movable == owner || (!isstructure(nearby_movable)) )
+			continue
+		things_to_convert += nearby_movable
+
+	return things_to_convert
 
 /datum/action/cooldown/spell/aoe/rust_conversion/cast_on_thing_in_aoe(turf/victim, mob/living/caster)
 	// We have less chance of rusting stuff that's further
@@ -29,7 +38,6 @@
 
 	caster.do_rust_heretic_act(victim)
 
-/datum/action/cooldown/spell/aoe/rust_conversion/small
-	name = "Rust Conversion"
-	desc = "Spreads rust onto nearby surfaces."
-	aoe_radius = 2
+/datum/action/cooldown/spell/aoe/rust_conversion/construct
+	name = "Construct Spread"
+	cooldown_time = 15 SECONDS

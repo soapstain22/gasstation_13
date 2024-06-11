@@ -80,8 +80,11 @@
 	// If we have targets, we can check to see if we can do a sacrifice
 	// Let's remove any humans in our atoms list that aren't a sac target
 	for(var/mob/living/carbon/human/sacrifice in atoms)
-		// If the mob's not in soft crit or worse, or isn't one of the sacrifices, remove it from the list
-		if(sacrifice.stat < SOFT_CRIT || !(sacrifice in heretic_datum.sac_targets))
+		// If the mob's not in soft crit or worse, remove from list
+		if(sacrifice.stat < SOFT_CRIT)
+			atoms -= sacrifice
+		// Otherwise if it's neither a target nor a cultist, remove it
+		else if(!(sacrifice in heretic_datum.sac_targets) && !IS_CULTIST(sacrifice))
 			atoms -= sacrifice
 
 	// Finally, return TRUE if we have a target in the list
@@ -94,7 +97,9 @@
 
 /datum/heretic_knowledge/hunt_and_sacrifice/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-	if(!LAZYLEN(heretic_datum.sac_targets))
+	// Force it to work if the sacrifice is a cultist, even if there's no targets.
+	var/mob/living/carbon/human/sac = selected_atoms[1]
+	if(!LAZYLEN(heretic_datum.sac_targets) && !IS_CULTIST(sac))
 		if(obtain_targets(user, heretic_datum = heretic_datum))
 			return TRUE
 		else
@@ -183,34 +188,90 @@
  * * selected_atoms - a list of all atoms chosen. Should be (at least) one human.
  * * loc - the turf the sacrifice is occuring on
  */
-/datum/heretic_knowledge/hunt_and_sacrifice/proc/sacrifice_process(mob/living/user, list/selected_atoms)
+/datum/heretic_knowledge/hunt_and_sacrifice/proc/sacrifice_process(mob/living/user, list/selected_atoms, turf/loc)
 
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
 	var/mob/living/carbon/human/sacrifice = locate() in selected_atoms
 	if(!sacrifice)
 		CRASH("[type] sacrifice_process didn't have a human in the atoms list. How'd it make it so far?")
-	if(!(sacrifice in heretic_datum.sac_targets))
-		CRASH("[type] sacrifice_process managed to get a non-target human. This is incorrect.")
+	if(!(sacrifice in heretic_datum.sac_targets) && !IS_CULTIST(sacrifice))
+		CRASH("[type] sacrifice_process managed to get a non-target, non-cult human. This is incorrect.")
 
 	if(sacrifice.mind)
 		LAZYADD(target_blacklist, sacrifice.mind)
 	heretic_datum.remove_sacrifice_target(sacrifice)
 
+
 	var/feedback = "Your patrons accept your offer"
 	var/sac_job_flag = sacrifice.mind?.assigned_role?.job_flags | sacrifice.last_mind?.assigned_role?.job_flags
-	if(sac_job_flag & JOB_HEAD_OF_STAFF)
-		heretic_datum.knowledge_points++
+	// Heads give 3 points, cultists give 1 point (and a special reward), normal sacrifices give 2 points.
+	heretic_datum.total_sacrifices++
+	if((sac_job_flag & JOB_HEAD_OF_STAFF))
+		heretic_datum.knowledge_points += 3
 		heretic_datum.high_value_sacrifices++
 		feedback += " <i>graciously</i>"
+	else if(IS_CULTIST(sacrifice))
+		heretic_datum.knowledge_points += 1
+		grant_reward(user, sacrifice, loc)
+		return
+	else
+		heretic_datum.knowledge_points += 2
 
 	to_chat(user, span_hypnophrase("[feedback]."))
-	heretic_datum.total_sacrifices++
-	heretic_datum.knowledge_points += 2
+	if(!begin_sacrifice(sacrifice))
+		disembowel_target(sacrifice)
+		return
 
 	sacrifice.apply_status_effect(/datum/status_effect/heretic_curse, user)
 
-	if(!begin_sacrifice(sacrifice))
-		disembowel_target(sacrifice)
+
+/datum/heretic_knowledge/hunt_and_sacrifice/proc/grant_reward(mob/living/user, mob/living/sacrifice, turf/loc)
+
+	// Visible and audible encouragement!
+	to_chat(user, span_big(span_hypnophrase("A servant of the Sanguine Apostate!")))
+	to_chat(user, span_hierophant("Your patrons are rapturous! You feel the rotten energies of the infidel warp and twist, mixing with that of your own..."))
+	playsound(sacrifice, 'sound/magic/disintegrate.ogg', 75, TRUE)
+
+	// The loser is DUSTED. The rune shines until the reward is deposited.
+	sacrifice.dust(TRUE, TRUE)
+	var/obj/effect/heretic_rune/rune = locate() in range(2, user)
+	if(rune)
+		rune.add_filter("reward_outline", 3, list("type" = "outline", "color" = COLOR_CULT_RED, "size" = 1.5))
+
+	addtimer(CALLBACK(src, PROC_REF(deposit_reward), user, loc, null, rune), 5 SECONDS)
+
+/datum/heretic_knowledge/hunt_and_sacrifice/proc/deposit_reward(mob/user, turf/loc, loop = 0, obj/rune)
+	if(loop > 5) // Max limit for retrying a reward
+		return
+	// Remove the rays, we don't need them anymore.
+	rune?.remove_filter("reward_outline")
+	playsound(loc, 'sound/magic/repulse.ogg', 75, TRUE)
+	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
+	ASSERT(heretic_datum)
+	// This list will be almost identical to unlocked_heretic_items, with the same keys, the difference being the values will be 1 to 5.
+	var/list/rewards = heretic_datum.unlocked_heretic_items.Copy()
+	// We will make it increasingly less likely to get a reward if you've already got it
+	for(var/possible_reward in heretic_datum.unlocked_heretic_items)
+		var/amount_already_awarded = heretic_datum.unlocked_heretic_items[possible_reward]
+		rewards[possible_reward] = min(5 - (amount_already_awarded * 2), 1)
+
+	var/atom/reward = pick_weight(rewards)
+	reward = new reward(loc)
+
+	if(isliving(reward))
+		if(summon_ritual_mob(user, loc, reward) == FALSE)
+			qdel(reward)
+			deposit_reward(user, loc, loop++, rune) // If no ghosts, try again until limit is hit
+		return
+
+	else if(isitem(reward))
+		var/obj/item/item_reward = reward
+		item_reward.gender_reveal(outline_color = COLOR_GREEN)
+
+	ASSERT(reward)
+
+	return reward
+
 
 /**
  * This proc is called from [proc/sacrifice_process] after the heretic successfully sacrifices [sac_target].)

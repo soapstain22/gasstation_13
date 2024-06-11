@@ -26,13 +26,16 @@
 
 /mob/living/basic/construct/harvester/Initialize(mapload)
 	. = ..()
-	AddElement(\
-		/datum/element/amputating_limbs,\
+	grant_abilities()
+
+/mob/living/basic/construct/harvester/proc/grant_abilities()
+	AddElement(/datum/element/wall_walker, /turf/closed/wall/mineral/cult)
+	AddComponent(\
+		/datum/component/amputating_limbs,\
 		surgery_time = 0,\
 		surgery_verb = "slicing",\
 		minimum_stat = CONSCIOUS,\
 	)
-	AddElement(/datum/element/wall_walker, /turf/closed/wall/mineral/cult)
 	var/datum/action/innate/seek_prey/seek = new(src)
 	seek.Grant(src)
 	seek.Activate()
@@ -126,3 +129,48 @@
 	desc = "Activate to track Nar'Sie!"
 	button_icon_state = "sintouch"
 	the_construct.seeking = TRUE
+
+/mob/living/basic/construct/harvester/heretic
+	name = "Rusted Harvester"
+	real_name = "Rusted Harvester"
+	desc = "A long, thin, decrepit construct originally built to herald Nar'Sie's rise, corrupted and rusted by the forces of the Mansus to spread its will instead."
+	icon_state = "harvester"
+	icon_living = "harvester"
+	construct_spells = list(
+		/datum/action/cooldown/spell/aoe/rust_conversion,
+		/datum/action/cooldown/spell/pointed/rust_construction,
+	)
+	can_repair = FALSE
+	slowed_by_drag = FALSE
+	faction = list(FACTION_HERETIC)
+	// Dim green
+	lighting_cutoff_red = 10
+	lighting_cutoff_green = 5
+	lighting_cutoff_blue = 20
+	playstyle_string = "<B>You are a Rusted Harvester, built to serve the Sanguine Apostate, but twisted to work the will of the Mansus. You are fragile and weak, but you rend cultists (only) apart on each attack. Follow your Master's orders!<B>"
+	theme = THEME_HERETIC
+
+// Just in case
+/mob/living/basic/construct/harvester/heretic/mind_initialize()
+	. = ..()
+	mind.add_antag_datum(/datum/antagonist/heretic_monster)
+
+/mob/living/basic/construct/harvester/heretic/grant_abilities()
+	AddElement(/datum/element/wall_walker, or_trait = TRAIT_RUSTY)
+	AddElement(/datum/element/leeching_walk)
+	AddComponent(\
+		/datum/component/amputating_limbs,\
+		surgery_time = 0,\
+		surgery_verb = "slicing",\
+		minimum_stat = CONSCIOUS,\
+		pre_hit_callback = CALLBACK(src, PROC_REF(is_cultist_handler)),\
+
+	)
+
+/mob/living/basic/construct/harvester/heretic/proc/is_cultist_handler(mob/victim)
+	return IS_CULTIST(victim)
+
+/mob/living/basic/construct/harvester/heretic/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_MANSUS_TOUCHED, REF(src))
+	add_filter("rusted_harvester", 3, list("type" = "outline", "color" = COLOR_GREEN, "size" = 2, "alpha" = 40))

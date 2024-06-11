@@ -332,10 +332,6 @@ structure_check() searches for nearby cultist structures required for the invoca
 			to_chat(invoker, span_cult_italic("[sacrificial] is too greatly linked to the world! You need three acolytes!"))
 		return FALSE
 
-	var/signal_result = SEND_SIGNAL(sacrificial, COMSIG_LIVING_CULT_SACRIFICED, invokers, cult_team)
-	if(signal_result & STOP_SACRIFICE)
-		return FALSE
-
 	if(sacrificial.mind)
 		LAZYADD(GLOB.sacrificed, WEAKREF(sacrificial.mind))
 		for(var/datum/objective/sacrifice/sac_objective in cult_team.objectives)
@@ -349,7 +345,10 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 	new /obj/effect/temp_visual/cult/sac(loc)
 
-	if(!(signal_result & SILENCE_SACRIFICE_MESSAGE))
+	var/signal_result = SEND_SIGNAL(sacrificial, COMSIG_LIVING_CULT_SACRIFICED, invokers, cult_team)
+
+	// big sac overrides it
+	if(!(signal_result & SILENCE_SACRIFICE_MESSAGE) || big_sac)
 		for(var/invoker in invokers)
 			if(big_sac)
 				to_chat(invoker, span_cult_large("\"Yes! This is the one I desire! You have done well.\""))
@@ -358,6 +357,10 @@ structure_check() searches for nearby cultist structures required for the invoca
 				to_chat(invoker, span_cult_large("\"I accept this sacrifice.\""))
 			else
 				to_chat(invoker, span_cult_large("\"I accept this meager sacrifice.\""))
+
+	// post-message
+	if(signal_result & STOP_SACRIFICE)
+		return FALSE
 
 	if(iscyborg(sacrificial))
 		var/construct_class = show_radial_menu(invokers[1], sacrificial, GLOB.construct_radial_images, require_near = TRUE, tooltips = TRUE)
@@ -370,17 +373,20 @@ structure_check() searches for nearby cultist structures required for the invoca
 		sacriborg.mmi = null
 		qdel(sacrificial)
 		return TRUE
-
-	var/obj/item/soulstone/stone = new(loc)
-	if(sacrificial.mind && !HAS_TRAIT(sacrificial, TRAIT_SUICIDED))
-		stone.capture_soul(sacrificial,  invokers[1], forced = TRUE)
-
-	if(sacrificial)
+	if(sacrificial && (signal_result & DUST_SACRIFICE)) // No soulstone when dusted
+		playsound(sacrificial, 'sound/magic/teleport_diss.ogg', 100, TRUE)
+		sacrificial.investigate_log("has been sacrificially dusted by the cult.", INVESTIGATE_DEATHS)
+		sacrificial.dust(TRUE, FALSE, TRUE)
+	else if (sacrificial)
+		var/obj/item/soulstone/stone = new(loc)
+		if(sacrificial.mind && !HAS_TRAIT(sacrificial, TRAIT_SUICIDED))
+			stone.capture_soul(sacrificial,  invokers[1], forced = TRUE)
 		playsound(sacrificial, 'sound/magic/disintegrate.ogg', 100, TRUE)
 		sacrificial.investigate_log("has been sacrificially gibbed by the cult.", INVESTIGATE_DEATHS)
 		sacrificial.gib(DROP_ALL_REMAINS)
 
 	try_spawn_sword() // after sharding and gibbing, which potentially dropped a null rod
+
 	return TRUE
 
 /// Tries to convert a null rod over the rune to a cult sword
@@ -396,12 +402,12 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 		rod.visible_message(span_cult_italic(displayed_message))
 		switch(num_slain)
-			if(0, 1)
+			if(0)
 				animate_spawn_sword(rod, /obj/item/melee/cultblade/dagger)
-			if(2)
+			if(1)
 				animate_spawn_sword(rod, /obj/item/melee/cultblade)
 			else
-				animate_spawn_sword(rod, /obj/item/cult_bastard)
+				animate_spawn_sword(rod, /obj/item/melee/cultblade/halberd)
 		return TRUE
 
 	return FALSE
