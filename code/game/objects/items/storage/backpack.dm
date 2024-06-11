@@ -709,6 +709,18 @@
 /obj/item/storage/backpack/duffelbag/syndie/ammo/mauler
 	desc = "A large duffel bag, packed to the brim with various exosuit ammo."
 
+/obj/item/storage/backpack/dufflebag/syndie/cyborg_support
+	desc = "A large duffle bag, packed to the brim with supplies to support cyborg units."
+
+/obj/item/storage/backpack/dufflebag/syndie/cyborg_support/PopulateContents()
+	new /obj/item/storage/belt/utility/syndicate(src)
+	new /obj/item/clothing/glasses/hud/diagnostic/night(src)
+	new /obj/item/stock_parts/cell/bluespace(src)
+	new /obj/item/card/emag(src)
+	new /obj/item/encryptionkey/binary(src)
+	new /obj/item/borg_restart_board(src)
+	new /obj/item/stack/cable_coil(src)
+
 /obj/item/storage/backpack/duffelbag/syndie/ammo/mauler/PopulateContents()
 	new /obj/item/mecha_ammo/lmg(src)
 	new /obj/item/mecha_ammo/lmg(src)
