@@ -63,9 +63,6 @@
 	///What is our current lifestage?
 	var/life_stage = SLIME_LIFE_STAGE_BABY
 
-	///Our slime's current mood
-	var/current_mood = SLIME_MOOD_NONE
-
 	///The number of /obj/item/slime_extract's the slime has left inside
 	var/cores = 1
 	///Chance of mutating, should be between 25 and 35
