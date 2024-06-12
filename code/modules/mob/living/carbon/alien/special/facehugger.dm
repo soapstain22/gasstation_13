@@ -39,6 +39,7 @@
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 	AddElement(/datum/element/atmos_sensitive, mapload)
+	AddElement(/datum/element/muffles_speech)
 
 	RegisterSignal(src, COMSIG_LIVING_TRYING_TO_PULL, PROC_REF(react_to_mob))
 
@@ -122,7 +123,7 @@
 
 /obj/item/clothing/mask/facehugger/proc/valid_to_attach(mob/living/hit_mob)
 	// valid targets: carbons except aliens and devils
-	// facehugger state early exit checks
+	// facehugger state early exit checks (Note: Melbert does not want dead people to be huggable)
 	if(stat != CONSCIOUS)
 		return FALSE
 	if(attached)
@@ -171,9 +172,12 @@
 	log_combat(target, src, "was facehugged by")
 	return TRUE // time for a smoke
 
-/obj/item/clothing/mask/facehugger/proc/Attach(mob/living/M)
-	if(!valid_to_attach(M))
+/obj/item/clothing/mask/facehugger/proc/Attach(mob/living/victim)
+	if(!valid_to_attach(victim))
 		return
+
+	if(victim.stat < UNCONSCIOUS) //sorry bro you gotta be awake
+		victim.say("AAAA!!") //triggers muffled speech and also visual feedback i guess
 	// early returns and validity checks done: attach.
 	attached++
 	//ensure we detach once we no longer need to be attached
@@ -181,12 +185,11 @@
 
 
 	if(!sterile)
-		M.take_bodypart_damage(strength,0) //done here so that humans in helmets take damage
-		M.Unconscious(MAX_IMPREGNATION_TIME/0.3) //something like 25 ticks = 20 seconds with the default settings
+		victim.take_bodypart_damage(strength,0) //done here so that humans in helmets take damage
 
 	GoIdle() //so it doesn't jump the people that tear it off
 
-	addtimer(CALLBACK(src, PROC_REF(Impregnate), M), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+	addtimer(CALLBACK(src, PROC_REF(Impregnate), victim), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
 /obj/item/clothing/mask/facehugger/proc/detach()
 	attached = 0
@@ -248,6 +251,32 @@
 	stat = DEAD
 
 	visible_message(span_danger("[src] curls up into a ball!"))
+
+	// chest maybe because getting slammed in the chest would knock it off your face while dead
+	AddComponent(/datum/component/knockoff, knockoff_chance = 40, target_zones = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST), slots_knockoffable = slot_flags)
+
+/obj/item/clothing/mask/facehugger/allow_attack_hand_drop(mob/living/carbon/human/user)
+	if(!real || sterile || user.get_organ_by_type(/obj/item/organ/internal/body_egg/alien_embryo))
+		return ..()
+	if(istype(user) && ishuman(loc) && stat != DEAD)
+		if(user == loc && user.get_item_by_slot(slot_flags) == src)
+			to_chat(user, span_userdanger("[src] is latched on too tight! Get help or wait for it to let go!"))
+			return FALSE
+	return ..()
+
+/obj/item/clothing/mask/facehugger/MouseDrop(atom/over)
+	var/mob/living/user = usr
+	var/mob/living/carbon/human/wearer = loc
+	if(!istype(user) || !istype(wearer))
+		return..()
+	if(user != wearer)
+		return ..()
+	if(!real || sterile || user.get_organ_by_type(/obj/item/organ/internal/body_egg/alien_embryo))
+		return ..()
+	if(wearer.get_item_by_slot(slot_flags) == src && stat != DEAD)
+		to_chat(user, span_userdanger("[src] is latched on too tight! Get help or wait for it to let go!"))
+		return
+	return ..()
 
 /proc/CanHug(mob/living/M)
 	if(!istype(M))
