@@ -22,6 +22,11 @@
 	var/blood_radius = 1
 	/// If TRUE, we equip "blood crawl" hands to the jaunter to prevent using items
 	var/equip_blood_hands = TRUE
+	/// Apply damage every 20 seconds if we bloodcrawling
+	var/jaunt_damage_timer
+	/// When demon first appears, it does not take damage while in Jaunt. He also doesn't take damage while he's eating someone.
+	/// Also if not a demon user he have jaunt damage resist all time.
+	var/resist_jaunt_damage = TRUE
 
 /datum/action/cooldown/spell/jaunt/bloodcrawl/Grant(mob/grant_to)
 	. = ..()
@@ -103,9 +108,29 @@
 	blood.visible_message(span_warning("[jaunter] sinks into [blood]!"))
 	playsound(jaunt_turf, 'sound/magic/enter_blood.ogg', 50, TRUE, -1)
 	jaunter.extinguish_mob()
+	if(!iscarbon(jaunter))
+		jaunt_damage_timer = addtimer(CALLBACK(src, PROC_REF(damage_for_lazy_demon), jaunter), 20 SECONDS)
 
 	REMOVE_TRAIT(jaunter, TRAIT_NO_TRANSFORM, REF(src))
 	return TRUE
+
+/**
+ * Apply damage to demon when he using bloodcrawl.
+ * Every 20 SECONDS check if demon still crawling and update timer.
+ */
+/datum/action/cooldown/spell/jaunt/bloodcrawl/proc/damage_for_lazy_demon(mob/living/lazy_demon)
+	if(!lazy_demon)
+		return
+	if(resist_jaunt_damage)
+		return
+	if(isturf(lazy_demon.loc))
+		return
+	if(isnull(jaunt_damage_timer))
+		return
+	lazy_demon.apply_damage(lazy_demon.maxHealth*0.05, BRUTE)
+	jaunt_damage_timer = addtimer(CALLBACK(src, PROC_REF(damage_for_lazy_demon), lazy_demon), 20 SECONDS)
+	to_chat(lazy_demon, span_warning("You feel like you are dissolving in bloodsea. You shouldn't stay in bloodcrawl for too long!"))
+
 
 /**
  * Attempts to Exit the passed blood pool.
@@ -131,6 +156,9 @@
 /datum/action/cooldown/spell/jaunt/bloodcrawl/on_jaunt_exited(obj/effect/dummy/phased_mob/jaunt, mob/living/unjaunter)
 	UnregisterSignal(jaunt, COMSIG_MOVABLE_MOVED)
 	exit_blood_effect(unjaunter)
+	if(!iscarbon(unjaunter))
+		jaunt_damage_timer = null
+		resist_jaunt_damage = FALSE
 	if(equip_blood_hands && iscarbon(unjaunter))
 		for(var/obj/item/bloodcrawl/blood_hand in unjaunter.held_items)
 			unjaunter.temporarilyRemoveItemFromInventory(blood_hand, force = TRUE)
@@ -176,10 +204,10 @@
 
 	var/turf/jaunt_turf = get_turf(jaunter)
 	// if we're not pulling anyone, or we can't what we're pulling
-	if(!isliving(coming_with))
+	if(!ishuman(coming_with))
 		return
 
-	var/mob/living/victim = coming_with
+	var/mob/living/carbon/human/victim = coming_with
 
 	if(victim.stat == CONSCIOUS)
 		jaunt_turf.visible_message(
@@ -236,12 +264,18 @@
  * Called when a victim starts to be consumed.
  */
 /datum/action/cooldown/spell/jaunt/bloodcrawl/slaughter_demon/proc/on_victim_start_consume(mob/living/victim, mob/living/jaunter)
+	if(!iscarbon(jaunter))
+		resist_jaunt_damage = TRUE
+		jaunt_damage_timer = null
 	to_chat(jaunter, span_danger("You begin to feast on [victim]... You can not move while you are doing this."))
 
 /**
  * Called when a victim is successfully consumed.
  */
 /datum/action/cooldown/spell/jaunt/bloodcrawl/slaughter_demon/proc/on_victim_consumed(mob/living/victim, mob/living/jaunter)
+	if(!iscarbon(jaunter))
+		resist_jaunt_damage = FALSE
+		jaunt_damage_timer = addtimer(CALLBACK(src, PROC_REF(damage_for_lazy_demon), jaunter), 20 SECONDS)
 	to_chat(jaunter, span_danger("You devour [victim]. Your health is fully restored."))
 	qdel(victim)
 
