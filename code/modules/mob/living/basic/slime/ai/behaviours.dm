@@ -1,29 +1,3 @@
-/datum/ai_behavior/perform_change_slime_face
-
-/datum/ai_behavior/perform_change_slime_face/perform(seconds_per_tick, datum/ai_controller/controller)
-	var/mob/living/basic/slime/slime_pawn = controller.pawn
-	if(!istype(slime_pawn))
-		return AI_BEHAVIOR_DELAY
-
-	var/current_mood = slime_pawn.current_mood
-
-	var/new_mood = SLIME_MOOD_NONE
-
-	if (controller.blackboard[BB_SLIME_RABID] || LAZYLEN(controller.blackboard[BB_BASIC_MOB_RETALIATE_LIST]) > 0)
-		new_mood = SLIME_MOOD_ANGRY
-	else if (controller.blackboard[BB_SLIME_HUNGER_DISABLED])
-		new_mood = SLIME_MOOD_SMILE
-	else if (controller.blackboard[BB_CURRENT_HUNTING_TARGET])
-		new_mood = SLIME_MOOD_MISCHIEVOUS
-	else
-		new_mood = pick(SLIME_MOOD_SAD, SLIME_MOOD_SMILE, SLIME_MOOD_POUT)
-
-	if(current_mood != new_mood)
-		slime_pawn.current_mood = new_mood
-		slime_pawn.regenerate_icons()
-
-	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
-
 /datum/ai_behavior/find_hunt_target/find_slime_food
 
 // Check if the slime can drain the target

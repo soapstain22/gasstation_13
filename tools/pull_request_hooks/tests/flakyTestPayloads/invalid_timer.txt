@@ -1757,9 +1757,6 @@
 2023-11-12T09:05:11.6858248Z ##[group]/datum/unit_test/siunit
 2023-11-12T09:05:11.6862565Z [1;32mPASS[0m /datum/unit_test/siunit 0s
 2023-11-12T09:05:11.6864627Z ##[endgroup]
-2023-11-12T09:05:11.6994032Z ##[group]/datum/unit_test/slime_mood
-2023-11-12T09:05:11.7086306Z [1;32mPASS[0m /datum/unit_test/slime_mood 0.1s
-2023-11-12T09:05:11.7089418Z ##[endgroup]
 2023-11-12T09:05:11.7646724Z ##[group]/datum/unit_test/slips
 2023-11-12T09:05:11.7998254Z [1;32mPASS[0m /datum/unit_test/slips 0s
 2023-11-12T09:05:11.7999914Z ##[endgroup]
