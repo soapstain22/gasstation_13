@@ -1,0 +1,43 @@
+{
+	"version": 1,
+	"map_name": "gasstation",
+	"map_path": "map_files/gasstation",
+	"map_file": "gasstation.dmm",
+	"shuttles": {
+		"cargo": "cargo_box",
+		"ferry": "ferry_fancy",
+		"whiteship": "whiteship_meta",
+		"emergency": "emergency_meta"
+	},
+	"traits": [
+		{
+			"Up": true,
+			"Baseturf":"/turf/open/misc/asteroid/bottom",
+			"Linkage": "Cross"
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Baseturf": "/turf/open/misc/asteroid/gs",
+			"Linkage": "Cross"
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Baseturf": "/turf/open/misc/asteroid/gs",
+			"Linkage": "Cross"
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Baseturf": "/turf/open/misc/asteroid/gs",
+			"Linkage": "Cross"
+		},
+		{
+			"Down": true,
+			"Baseturf": "/turf/open/misc/asteroid/gs",
+			"Linkage": "Cross"
+		}
+	],
+	"minetype": "none"
+}

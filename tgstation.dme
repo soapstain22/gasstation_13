@@ -2788,6 +2788,7 @@
 #include "code\game\turfs\open\space\space.dm"
 #include "code\game\turfs\open\space\space_EXPENSIVE.dm"
 #include "code\game\turfs\open\space\transit.dm"
+#include "code\gs13_things\turf.dm"
 #include "code\modules\actionspeed\_actionspeed_modifier.dm"
 #include "code\modules\actionspeed\modifiers\addiction.dm"
 #include "code\modules\actionspeed\modifiers\base.dm"

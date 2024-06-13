@@ -16,7 +16,6 @@ endmap
 # Production-level maps.
 
 map birdshot
-	#default
 	maxplayers 66
 	votable
 endmap
@@ -59,6 +58,8 @@ endmap
 
 map multiz_debug
 endmap
-
+map gasstation
+	#default
+endmap
 map runtimestation
 endmap

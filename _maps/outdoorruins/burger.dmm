@@ -1,0 +1,87 @@
+"aa" = (/turf/open/floor/iron,/area/template_noop)
+"ab" = (/turf/open/floor/asphalt,/area/template_noop)
+"ac" = (/obj/structure/fence/corner{icon_state = "corner"; dir = 9},/turf/template_noop,/area/template_noop)
+"ad" = (/obj/structure/fence{icon_state = "straight"; dir = 8},/turf/template_noop,/area/template_noop)
+"ae" = (/obj/structure/fence{dir = 4},/turf/template_noop,/area/template_noop)
+"af" = (/obj/structure/fence/door,/turf/template_noop,/area/template_noop)
+"ag" = (/obj/structure/fence/corner{icon_state = "corner"; dir = 5},/turf/template_noop,/area/template_noop)
+"ah" = (/turf/template_noop,/area/template_noop)
+"ai" = (/obj/structure/fence,/turf/template_noop,/area/template_noop)
+"aj" = (/obj/effect/spawner/random/trash/food_packaging,/obj/effect/spawner/random/trash/food_packaging,/obj/effect/spawner/random/trash/garbage,/turf/template_noop,/area/template_noop)
+"ak" = (/obj/effect/spawner/random/trash/bin,/turf/template_noop,/area/template_noop)
+"al" = (/obj/effect/spawner/random/trash/garbage,/obj/effect/spawner/random/trash/garbage,/turf/template_noop,/area/template_noop)
+"am" = (/obj/effect/spawner/random/trash/cigbutt,/turf/template_noop,/area/template_noop)
+"an" = (/turf/closed/wall,/area/station/service/cafeteria)
+"ao" = (/obj/structure/mineral_door/wood,/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"ap" = (/obj/machinery/vending/wardrobe/chef_wardrobe,/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"aq" = (/obj/machinery/power/apc/auto_name/directional/north,/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"ar" = (/obj/machinery/vending/dinnerware,/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"as" = (/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"at" = (/obj/machinery/oven/range,/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"au" = (/obj/structure/table/reinforced,/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"av" = (/obj/machinery/griddle,/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"aw" = (/obj/structure/closet/secure_closet/freezer/kitchen/all_access,/turf/open/floor/iron/kitchen_coldroom/freezerfloor,/area/station/service/cafeteria)
+"ax" = (/obj/structure/kitchenspike,/turf/open/floor/iron/kitchen_coldroom/freezerfloor,/area/station/service/cafeteria)
+"ay" = (/obj/machinery/gibber,/turf/open/floor/iron/kitchen_coldroom/freezerfloor,/area/station/service/cafeteria)
+"az" = (/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"aA" = (/obj/structure/mineral_door/wood,/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"aB" = (/turf/open/floor/iron/kitchen_coldroom/freezerfloor,/area/station/service/cafeteria)
+"aC" = (/obj/structure/closet/secure_closet/bar/all_access,/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"aD" = (/obj/machinery/light/small,/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"aE" = (/obj/machinery/airalarm/directional/south,/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"aF" = (/obj/machinery/light{icon_state = "tube"; dir = 8},/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"aG" = (/obj/structure/table/reinforced,/obj/machinery/reagentgrinder,/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"aH" = (/obj/structure/table/reinforced,/obj/machinery/microwave,/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"aI" = (/obj/machinery/light{icon_state = "tube"; dir = 4},/obj/structure/table/reinforced,/obj/item/knife/kitchen,/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"aJ" = (/obj/structure/closet/secure_closet/freezer/meat/all_access,/turf/open/floor/iron/kitchen_coldroom/freezerfloor,/area/station/service/cafeteria)
+"aK" = (/obj/structure/sink/kitchen/directional/west,/turf/open/floor/iron/kitchen/small,/area/station/service/cafeteria)
+"aL" = (/obj/machinery/restaurant_portal/bar,/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"aM" = (/obj/machinery/restaurant_portal/restaurant,/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"aN" = (/obj/machinery/light{icon_state = "tube"; dir = 4},/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"aO" = (/obj/structure/table/wood,/obj/machinery/chem_master/condimaster,/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aP" = (/obj/structure/table/wood,/obj/structure/table/reinforced,/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aQ" = (/obj/structure/table/reinforced,/obj/machinery/reagentgrinder,/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aR" = (/obj/structure/table/wood,/obj/structure/table/reinforced,/obj/machinery/chem_dispenser/drinks,/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aS" = (/obj/structure/table/reinforced,/obj/machinery/chem_dispenser/drinks/beer,/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aT" = (/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aU" = (/obj/structure/toilet,/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aV" = (/obj/structure/table/wood,/obj/machinery/light{icon_state = "tube"; dir = 1},/turf/open/space/basic,/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aW" = (/turf/open/space/basic,/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aX" = (/obj/machinery/light{icon_state = "tube"; dir = 4},/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"aY" = (/obj/machinery/light{icon_state = "tube"; dir = 8},/turf/open/floor/iron/checker,/area/station/service/cafeteria)
+"aZ" = (/obj/structure/table/wood,/turf/open/floor/iron/grimy,/area/station/service/cafeteria)
+"ba" = (/obj/structure/chair/sofa/left/brown{icon_state = "sofaend_left"; dir = 4},/obj/structure/window/reinforced/spawner/directional/west,/turf/open/floor/iron/kitchen,/area/station/service/cafeteria)
+"bb" = (/obj/structure/table/wood,/turf/open/floor/iron/kitchen,/area/station/service/cafeteria)
+"bc" = (/obj/structure/chair/sofa/right/brown{icon_state = "sofaend_right"; dir = 8},/obj/structure/window/reinforced/spawner/directional/east,/turf/open/floor/iron/kitchen,/area/station/service/cafeteria)
+"bd" = (/obj/structure/chair/sofa/right/brown{icon_state = "sofaend_right"; dir = 4},/obj/structure/window/reinforced/spawner/directional/west,/turf/open/floor/iron/kitchen,/area/station/service/cafeteria)
+"be" = (/obj/structure/table/wood,/obj/machinery/light/small,/turf/open/floor/iron/kitchen,/area/station/service/cafeteria)
+"bf" = (/obj/structure/chair/sofa/left/brown{icon_state = "sofaend_left"; dir = 8},/obj/structure/window/reinforced/spawner/directional/east,/turf/open/floor/iron/kitchen,/area/station/service/cafeteria)
+"bg" = (/obj/structure/window/fulltile,/turf/open/floor/plating,/area/station/service/cafeteria)
+
+(1,1,1) = {"
+aaabababaaacadaeadadaeafagahahahahahahahahahahahah
+aaabababaaaiajajahakahahaiahahahahahahahahahahahah
+aaabababaaaialahamahamamaiahahahahahahahahahahahah
+aaabababaaanananananaoananananananananananananahah
+aaabababaaanapaqaranasanatatauauavavanawaxayanahah
+aaabababaaanasasasaoasaoazazazazazazaAaBaBaBanahah
+aaabababaaanaCaDaEanasanaFazazaGaHaIanaJaBaBanahah
+aaabababaaanananananasanazazaKananananananananahah
+aaabababaaanaLaMasasaNanaOaPaPaQaRaSanaTaTaUanahah
+aaabababaaanasasasasasaVaWaWaTaTaTaXanaTaTaTanahah
+aaabababaaanaYasasasasaZaZaZaZaZaZaZananaoananahah
+aaabababaaanasasasasasasasasasasasasasasasasanahah
+aaabababaaanasasasasasasasasasasasasasasasasanahah
+aaabababaaanbabbbcbabbbcbabbbcbabbbcasasasaNanahah
+aaabababaaanbdbebfbdbebfbdbebfbdbebfasasasasanahah
+aaabababaaanbgbgbgbgbgbgbgbgbgbgbgbgananaoananahah
+aaabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahah
+aaabababaaaaababababababababababababababababaaahah
+aaabababaaaaababababababababababababababababaaahah
+aaabababaaaaababababababababababababababababaaahah
+aaabababababababababababababababababababababaaahah
+aaabababababababababababababababababababababaaahah
+aaabababababababababababababababababababababaaahah
+aaabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahah
+aaabababaaahahahahahahahahahahahahahahahahahahahah
+"}

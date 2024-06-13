@@ -1,0 +1,38 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/turf/closed/wall,/area/template_noop)
+"c" = (/obj/machinery/computer/rdconsole,/turf/open/floor/iron,/area/template_noop)
+"d" = (/obj/machinery/computer/rdservercontrol,/turf/open/floor/iron,/area/template_noop)
+"e" = (/obj/machinery/netpod,/turf/open/floor/iron,/area/template_noop)
+"f" = (/obj/machinery/computer/order_console/bitrunning,/turf/open/floor/iron,/area/template_noop)
+"g" = (/turf/open/floor/iron,/area/template_noop)
+"h" = (/obj/machinery/computer/quantum_console,/turf/open/floor/iron,/area/template_noop)
+"i" = (/obj/machinery/byteforge,/turf/open/floor/iron,/area/template_noop)
+"j" = (/obj/machinery/quantum_server,/turf/open/floor/iron,/area/template_noop)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aabbbbbbbbbbaaaaaaaaaaaaa
+aabcdefggggbaaaaaaaaaaaaa
+aabggggggggbaaaaaaaaaaaaa
+aabggggggggbaaaaaaaaaaaaa
+aabhiejggggbaaaaaaaaaaaaa
+aabggggggggbaaaaaaaaaaaaa
+aabggggggggbaaaaaaaaaaaaa
+aabggggggggbaaaaaaaaaaaaa
+aabggggggggbaaaaaaaaaaaaa
+aabggggggggbaaaaaaaaaaaaa
+aabggggggggbaaaaaaaaaaaaa
+aabbbbbbbbbbaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+"}
